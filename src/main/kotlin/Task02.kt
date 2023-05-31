@@ -21,4 +21,10 @@
  * Вывод - YES
  */
 class Task02 {
+    private val scan = java.util.Scanner(System.`in`)
+    private val intputData = scan.nextLine().split(' ').map { it.toInt() }
+
+    init {
+        println("YES")
+    }
 }

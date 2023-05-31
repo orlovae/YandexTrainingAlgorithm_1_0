@@ -44,10 +44,11 @@
  * выключается и температура в комнате не поменяется.
  */
 class Task01 {
-    private val intputData = kotlin.io.readln().split(' ').map { it.toInt() }
+    private val scan = java.util.Scanner(System.`in`)
+    private val intputData = scan.nextLine().split(' ').map { it.toInt() }
     private val tRoom = intputData[0]
     private val tCond = intputData[1]
-    private val mode = readln()
+    private val mode = scan.nextLine()
 
     init {
         println(getTRoomOut(

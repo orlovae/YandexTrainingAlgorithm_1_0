@@ -44,10 +44,10 @@
  * выключается и температура в комнате не поменяется.
  */
 class Task01 {
-    val intputData = kotlin.io.readln().split(' ').map { it.toInt() }
-    val tRoom = intputData[0]
-    val tCond = intputData[1]
-    val mode = readln()
+    private val intputData = kotlin.io.readln().split(' ').map { it.toInt() }
+    private val tRoom = intputData[0]
+    private val tCond = intputData[1]
+    private val mode = readln()
 
     init {
         println(getTRoomOut(
@@ -56,7 +56,7 @@ class Task01 {
                 mode = mode
         ))
     }
-    fun getTRoomOut(tRoom: Int, tCond: Int, mode: String): Int {
+    private fun getTRoomOut(tRoom: Int, tCond: Int, mode: String): Int {
             when (mode) {
                 "freeze" ->
                     return if (tRoom > tCond) {

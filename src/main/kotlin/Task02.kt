@@ -23,8 +23,21 @@
 class Task02 {
     private val scan = java.util.Scanner(System.`in`)
     private val intputData = scan.nextLine().split(' ').map { it.toInt() }
+    private val oneEdge = intputData[0]
+    private val twoEdge = intputData[1]
+    private val threeEdge = intputData[2]
 
     init {
-        println("YES")
+        checkAllEdge(oneEdge, twoEdge, threeEdge)
+    }
+
+    private fun checkAllEdge(oneEdge: Int, twoEdge: Int, threeEdge: Int) {
+        if (oneEdge + twoEdge > threeEdge &&
+                oneEdge + threeEdge > twoEdge &&
+                twoEdge + threeEdge > oneEdge) {
+            println("YES")
+        } else {
+            println("NO")
+        }
     }
 }

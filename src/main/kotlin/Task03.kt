@@ -65,32 +65,48 @@ class Task03 {
         numberInTelBookList.add(secondNumberInTelBook)
         numberInTelBookList.add(thirdNumberInTelBook)
 
+        val modifierNumberInTelBookList = mutableListOf<String>()
+
         numberInTelBookList.forEach {
-            prepareTelNumber(it)
+            modifierNumberInTelBookList.add(
+                prepareTelNumber(it)
+            )
+        }
+
+        val modifierNumberInTelBook = prepareTelNumber(telNumberSample)
+
+        modifierNumberInTelBookList.forEach{
+            if (modifierNumberInTelBook == it) {
+                println("YES")
+            } else {
+                println("NO")
+            }
         }
     }
 
-    private fun prepareTelNumber(telNumber: CharArray) {
+    private fun prepareTelNumber(telNumber: CharArray): String {
         val outTelNumber = CharArray(10)
         var left = 0
         var rightIn = telNumber.size - 1
         var rightOut = outTelNumber.size - 1
 
-
-
-        if (telNumber[left] == '+' && telNumber[left + 1] == '7') {
-            left += 2
-        }
-        if (telNumber[left] == '8') {
-            left += 1
-        }
-
         while (rightOut >= 0) {
-            while (rightIn >= 0 && telNumber[rightIn].isDigit() || telNumber[rightIn] == '+') {
-                outTelNumber[rightOut] = telNumber[rightIn]
+            while (rightIn >= 0 && !telNumber[rightIn].isDigit() && telNumber[rightIn] != '+') {
                 rightIn--
             }
+            outTelNumber[rightOut] = telNumber[rightIn]
+            if (rightIn == 0) {
+                break
+            }
+            rightIn--
             rightOut--
         }
+
+        if (outTelNumber[2] == '\u0000') {
+            outTelNumber[0] = '4'
+            outTelNumber[1] = '9'
+            outTelNumber[2] = '5'
+        }
+        return String(outTelNumber)
     }
 }
